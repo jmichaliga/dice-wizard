@@ -1,4 +1,4 @@
-# Dice Wizard 🎲
+# Dice Wizard 🎲⚡️
 
 A flexible TypeScript/JavaScript utility package for rolling and manipulating dice results.
 
