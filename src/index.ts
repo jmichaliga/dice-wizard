@@ -5,25 +5,52 @@ export interface DieResult {
   dieType: DieType;
 }
 
-export class DiceRoller {
+export class DiceWizard {
   private results: DieResult[] = [];
 
   /**
-   * Roll a specific number of dice of a given type
-   * @param count Number of dice to roll
-   * @param dieType Type of die (number of sides)
+   * Roll dice using either string notation (e.g. 'd20', '3d6') or number parameters
+   * @param countOrNotation Number of dice or string notation
+   * @param dieType Type of die (optional if using string notation)
    * @returns Array of die results
    */
-  roll(count: number, dieType: DieType): DieResult[] {
+  roll(countOrNotation: number | string, dieType?: DieType): DieResult[] {
+    let count: number;
+    let type: DieType;
+
+    if (typeof countOrNotation === 'string') {
+      const match = countOrNotation.toLowerCase().match(/^(\d+)?d(\d+)$/);
+      if (!match) {
+        throw new Error('Invalid dice notation. Use format: "d20" or "3d6"');
+      }
+      count = match[1] ? parseInt(match[1], 10) : 1;
+      type = parseInt(match[2], 10) as DieType;
+      
+      if (!this.isValidDieType(type)) {
+        throw new Error(`Invalid die type: d${type}`);
+      }
+    } else {
+      count = countOrNotation;
+      type = dieType as DieType;
+      
+      if (!this.isValidDieType(type)) {
+        throw new Error(`Invalid die type: d${type}`);
+      }
+    }
+
     const results: DieResult[] = [];
     
     for (let i = 0; i < count; i++) {
-      const value = Math.floor(Math.random() * dieType) + 1;
-      results.push({ value, dieType });
+      const value = Math.floor(Math.random() * type) + 1;
+      results.push({ value, dieType: type });
     }
 
     this.results = results;
     return results;
+  }
+
+  private isValidDieType(type: number): type is DieType {
+    return [4, 6, 8, 10, 12, 20, 100].includes(type);
   }
 
   /**
@@ -82,4 +109,6 @@ export class DiceRoller {
       .sort((a, b) => a.value - b.value)
       .slice(0, count);
   }
-} 
+}
+
+export default DiceWizard; 

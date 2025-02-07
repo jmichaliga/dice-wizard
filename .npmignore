@@ -1,0 +1,23 @@
+# Source code
+src/__tests__/
+
+# Config files
+.gitignore
+tsconfig.json
+webpack.config.js
+jest.config.js
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Build tools
+.travis.yml
+.jenkins.yml
+.github/
+
+# Dependencies
+node_modules/ 
