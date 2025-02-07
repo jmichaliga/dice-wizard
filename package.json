@@ -1,0 +1,27 @@
+{
+  "name": "dice-wizard",
+  "version": "0.0.1",
+  "description": "A utility package for rolling dice with various configurations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "dice",
+    "roller",
+    "random",
+    "game",
+    "threes"
+  ],
+  "author": "Justin Michaliga (justin.michaliga@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  }
+} 
