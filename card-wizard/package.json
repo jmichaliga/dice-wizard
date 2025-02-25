@@ -1,6 +1,6 @@
 {
   "name": "card-wizard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript library for card shuffling and dealing with standard playing cards",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
